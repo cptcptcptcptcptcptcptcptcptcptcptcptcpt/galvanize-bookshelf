@@ -2,13 +2,13 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex')
-const humps = require('humps');
+const humps = require('humps').camelizeKeys();
 const bam = require('boom').create(401, 'Unauthorized');
 
 router.route('/')
   .get((req, res, next) => {
     knex('favorites').join('books', 'books.id', 'book_id').then((g) => {
-      !req.cookies.token ? next(bam) : res.send(humps.camelizeKeys(g))
+      !req.cookies.token ? next(bam) : res.send(humps.(g))
     })
   })
   .post((req, res, next) => {
