@@ -14,8 +14,5 @@ r.route('/')
     usrO.email===req.body.email&&bcrypt(req.body.password, usr[0].hashed_password)?
     res.cookie('token', token, {httpOnly:true}).send(usrO):next(bam);
   })
-}).delete((req, res, next) => {
-  res.clearCookie('token');
-  res.send(true)
-});
+}).delete((req, res, next) => {res.clearCookie('token').send(true)});
 module.exports = r;
