@@ -1,7 +1,4 @@
-'use strict';
-const express = require('express');
-const r = express.Router();
-const knex = require('../knex');
+'use strict'; const express = require('express'); const r = express.Router(); const knex = require('../knex');
 const h = require('humps').camelizeKeys;
 const b = require('bcrypt').hashSync;
 r.route('/').post((req,res)=>{knex('users').returning(['id','first_name','last_name','email']).insert({
