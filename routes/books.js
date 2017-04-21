@@ -1,5 +1,4 @@
-'use strict';const e=require('express');const r=e.Router();const k=require('../knex');
-const h = require('humps');
+'use strict';const e=require('express');const r=e.Router();const k=require('../knex');const h=require('humps');
 r.route('/')
 .get((req,res)=>{k('books').orderBy('title','asc').then((demBooks)=>{res.send(h.camelizeKeys(demBooks)); });})
 .post((req,res)=>{k('books').returning(['id','title','author','genre','description','cover_url'])
