@@ -9,7 +9,7 @@ r.route('/')
     .insert(h.decamelizeKeys(req.body)).then((book) => { res.send(h.camelizeKeys(book[0])); }); });
 r.route('/:id')
 .get((req,res)=>{knex('books').where('id',req.params.id).then((book)=>{res.send(h.camelizeKeys(book[0])); })})
-.patch((req,res)=>{knex('books').where('id', req.params.id).returning(['id', 'title', 'author', 'genre', 'description', 'cover_url'])
+.patch((req,res)=>{knex('books').where('id', req.params.id).returning(['id','title','author','genre','description','cover_url'])
     .update(h.decamelizeKeys(req.body)).then((book) => { res.send(h.camelizeKeys(book[0])); });
 }).delete((req, res) => {
   knex('books').where('id', req.params.id).returning(['title', 'author', 'genre', 'description', 'cover_url'])
