@@ -10,8 +10,7 @@ router.route('/')
     knex('favorites').join('books', 'books.id', 'book_id').then((g) => {
       !req.cookies.token ? next(bam) : res.send(humps(g))
     })
-  })
-  .post((req, res, next) => {
+  }).post((req, res, next) => {
     knex('favorites').returning(['id', 'book_id', 'user_id']).insert({
       book_id: req.body.bookId,
       user_id: 1
