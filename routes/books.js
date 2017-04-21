@@ -4,8 +4,7 @@ const r = express.Router();
 const knex = require('../knex');
 const h = require('humps');
 r.route('/')
-.get((req,res)=>{knex('books').orderBy('title','asc').then((demBooks)=>{res.send(h.camelizeKeys(demBooks)); })
-})
+.get((req,res)=>{knex('books').orderBy('title','asc').then((demBooks)=>{res.send(h.camelizeKeys(demBooks)); });})
 .post((req,res)=>{knex('books').returning(['id','title','author','genre','description','cover_url'])
     .insert(h.decamelizeKeys(req.body)).then((book) => { res.send(h.camelizeKeys(book[0])); }); });
 r.route('/:id')
