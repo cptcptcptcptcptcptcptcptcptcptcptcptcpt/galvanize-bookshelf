@@ -15,4 +15,5 @@ r.route('/').get((req, res, next) => {
       .then((rm) => {res.send(h(rm[0]));})
   })
 r.route('/check').get((req, res, next) => {
-  !req.cookies.token?(req.query.bookId == 1?next(bam):next(bam)):(req.query.bookId == 1?res.send(true):res.send(false)); }); module.exports = r;
+  !req.cookies.token?(req.query.bookId == 1?next(bam):next(bam)):(req.query.bookId == 1?res.send(true):res.send(false)); });
+  module.exports = r;
