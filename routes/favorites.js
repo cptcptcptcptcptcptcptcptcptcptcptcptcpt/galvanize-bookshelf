@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const knex = require('../knex')
+const knex = require('../knex');
 const humps = require('humps').camelizeKeys;
 const bam = require('boom').create(401, 'Unauthorized');
 
