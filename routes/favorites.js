@@ -1,9 +1,5 @@
-'use strict';
-const e = require('express');
-const r = e.Router();
-const k = require('../knex');
-const h = require('humps').camelizeKeys;
-const bam = require('boom').create(401, 'Unauthorized');
+'use strict';const e=require('express');const r=e.Router();const k=require('../knex');const h=require('humps').camelizeKeys;
+const bam=require('boom').create(401, 'Unauthorized');
 r.route('/').get((req, res, next) => {k('favorites').join('books', 'books.id', 'book_id').then((g) => {
    !req.cookies.token?next(bam):res.send(h(g)); })
  }).post((req,res,next)=>{k('favorites').returning(['id','book_id','user_id']).insert({book_id:req.body.bookId,user_id:1})
