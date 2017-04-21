@@ -22,8 +22,6 @@ r.route('/:id')
     .update(h.decamelizeKeys(req.body)).then((book) => { res.send(h.camelizeKeys(book[0])); });
 }).delete((req, res) => {
   knex('books').where('id', req.params.id).returning(['title', 'author', 'genre', 'description', 'cover_url'])
-    .del().then((book) => {
-      res.send(h.camelizeKeys(book[0]));
-    });
+    .del().then((book) => { res.send(h.camelizeKeys(book[0])); });
 });
 module.exports = r;
