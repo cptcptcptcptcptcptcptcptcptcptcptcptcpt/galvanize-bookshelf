@@ -24,6 +24,7 @@ router.route('/')
       })
   })
 router.route('/check').get((req, res, next) => {
-  !req.cookies.token ? (req.query.bookId == 1 ? next(bam) : next(bam)) : (req.query.bookId == 1 ? res.send(true) : res.send(false));
+  !req.cookies.token ? (req.query.bookId == 1 ? next(bam) : next(bam)) :
+   (req.query.bookId == 1 ? res.send(true) : res.send(false));
 })
 module.exports = router;
