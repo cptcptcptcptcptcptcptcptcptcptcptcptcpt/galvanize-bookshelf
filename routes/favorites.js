@@ -14,9 +14,7 @@ router.route('/')
     knex('favorites').returning(['id', 'book_id', 'user_id']).insert({
       book_id: req.body.bookId,
       user_id: 1
-    }).then((p) => {
-      !req.cookies.token ? next(bam) : res.send(humps(p[0]));
-    })
+    }).then((p) => { !req.cookies.token ? next(bam) : res.send(humps(p[0])); })
   }).delete((req, res, next) => {
     !req.cookies.token ? next(bam) :
       knex('favorites').where('book_id', req.body.bookId).returning(['book_id', 'user_id']).del()
