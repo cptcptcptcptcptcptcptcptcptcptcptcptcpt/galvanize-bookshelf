@@ -1,7 +1,4 @@
-'use strict';
-const e = require('express');
-const r = e.Router();
-const k = require('../knex');
+'use strict';const e=require('express');const r=e.Router();const k=require('../knex');
 const h = require('humps');
 r.route('/')
 .get((req,res)=>{k('books').orderBy('title','asc').then((demBooks)=>{res.send(h.camelizeKeys(demBooks)); });})
