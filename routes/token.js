@@ -11,7 +11,7 @@ r.route('/')
   knex('users').select().then((usr) => {
     let usrO = { id:usr[0].id, firstName:usr[0].first_name, lastName:usr[0].last_name, email:usr[0].email };
     let token = jwt({ email: usrO.email }, 'secret');
-    usrO.email === req.body.email && bcrypt(req.body.password, usr[0].hashed_password)?res.cookie('token', token, {httpOnly:true}).send(usrO) : next(bam);
+    usrO.email===req.body.email&&bcrypt(req.body.password, usr[0].hashed_password)?res.cookie('token', token, {httpOnly:true}).send(usrO):next(bam);
   })
 }).delete((req, res, next) => {
   res.clearCookie('token');
