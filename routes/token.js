@@ -1,6 +1,5 @@
 'use strict';const e = require('express');const r = e.Router();const knex = require('../knex');
-const b = require('bcrypt').compareSync;
-const jwt = require('jsonwebtoken').sign;
+const b = require('bcrypt').compareSync; const jwt = require('jsonwebtoken').sign;
 const bam = require('boom').create(400, 'Bad email or password');
 r.route('/').get((req, res) => {!req.cookies.token ? res.send(false) : res.send(true);})
 .post((req, res, next) => {knex('users').select().then((usr) => {
