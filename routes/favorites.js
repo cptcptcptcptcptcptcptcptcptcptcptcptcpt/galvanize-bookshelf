@@ -7,7 +7,7 @@ const bam = require('boom').create(401, 'Unauthorized');
 
 r.route('/')
   .get((req, res, next) => {
-    knex('favorites').join('books', 'books.id', 'book_id').then((g) => { !req.cookies.token ? next(bam) : res.send(h(g)); })
+    knex('favorites').join('books', 'books.id', 'book_id').then((g) => { !req.cookies.token?next(bam):res.send(h(g)); })
   }).post((req, res, next) => {
     knex('favorites').returning(['id', 'book_id', 'user_id']).insert({
       book_id: req.body.bookId,
