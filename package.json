@@ -7,7 +7,7 @@
     "test": "mocha",
     "knex": "knex",
     "heroku-postbuild": "knex migrate:rollback; knex migrate:latest; knex seed:run",
-    "nodemon": "node app.js"
+    "nodemon": "node server.js"
   },
   "dependencies": {
     "body-parser": "~1.16.0",
