@@ -3,7 +3,9 @@ const e = require('express');
 const r = e.Router();
 const k = require('../knex');
 const h = require('humps');
-r.route('/').get((req, res) => {
+
+r.route('/')
+.get((req, res) => {
     k('books').orderBy('title', 'asc').then((demBooks) => {
       res.send(h.camelizeKeys(demBooks));
     });
@@ -14,7 +16,9 @@ r.route('/').get((req, res) => {
         res.send(h.camelizeKeys(book[0]));
       });
   });
-r.route('/:id').get((req, res) => {
+
+r.route('/:id')
+.get((req, res) => {
     k('books').where('id', req.params.id).then((book) => {
       res.send(h.camelizeKeys(book[0]));
     })

@@ -1,10 +1,12 @@
 'use strict';
-const e = require('express');
-const r = e.Router();
+const r = require('express').Router();
 const k = require('../knex');
 const h = require('humps').camelizeKeys;
 const bam = require('boom').create(401, 'Unauthorized');
-r.route('/').get((req, res, next) => {
+
+
+r.route('/')
+.get((req, res, next) => {
     k('favorites').join('books', 'books.id', 'book_id').then((g) => {
       !req.cookies.token ? next(bam) :
         res.send(h(g));
