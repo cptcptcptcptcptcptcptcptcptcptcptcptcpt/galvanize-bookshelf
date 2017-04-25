@@ -17,5 +17,5 @@ The [solutions](https://github.com/gSchool/galvanize-bookshelf-solution) are ava
 
 #### [⇐ Previous](6_heroku_deployment.md) | [Next ⇒](1_migrations_seeds.md)
 
-
+     
 [CHRISTIAN TAGGART HEROKU LAUNCH](https://lil-code-galvanize-bookshelf.herokuapp.com/)
