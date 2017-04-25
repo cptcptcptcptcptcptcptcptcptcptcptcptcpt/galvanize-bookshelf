@@ -3,7 +3,7 @@ exports.seed = function(knex, Promise) {
   return knex('books').del()
     .then(function() {
       return Promise.all([
-        // Inserts seed entriesssss
+        // Inserts seed entriessssss
         knex('books').insert([{
           id: 1,
           title: 'JavaScript, The Good Parts',
