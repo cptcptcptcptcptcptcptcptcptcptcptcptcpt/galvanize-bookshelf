@@ -1,11 +1,12 @@
 'use strict';
+
 const e = require('express');
 const r = e.Router();
 const k = require('../knex');
 const h = require('humps');
 
 r.route('/')
-.get((req, res) => {
+  .get((req, res) => {
     k('books').orderBy('title', 'asc').then((demBooks) => {
       res.send(h.camelizeKeys(demBooks));
     });
@@ -18,10 +19,10 @@ r.route('/')
   });
 
 r.route('/:id')
-.get((req, res) => {
+  .get((req, res) => {
     k('books').where('id', req.params.id).then((book) => {
       res.send(h.camelizeKeys(book[0]));
-    })
+    });
   })
   .patch((req, res) => {
     k('books').where('id', req.params.id).returning(['id', 'title', 'author', 'genre', 'description', 'cover_url'])
